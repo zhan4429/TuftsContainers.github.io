@@ -1,0 +1,12 @@
+title: [Mastering Reproducibility: pulling, running and building containerized HPC applications]
+description: [Container workshop provided by Tufts Research Technology]
+
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - README.md
+  - tutorials/
+encoding: UTF-8

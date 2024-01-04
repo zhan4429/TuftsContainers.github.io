@@ -1,5 +1,5 @@
-title: [Pulling, running and building containerized HPC applications]
-description: [Container workshop provided by Tufts Research Technology]
+title: "Pulling, running and building containerized HPC applications"
+description: "Container workshop provided by Tufts Research Technology"
 
 plugins:
   - jekyll-relative-links

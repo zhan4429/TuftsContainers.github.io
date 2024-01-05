@@ -30,18 +30,13 @@ There are different tags for each version and multiple containers/tags even exis
 To pull the image from BioContainers, we just need to run the below command:
 ```
 ## Default
-singularity pull docker://quay.io/biocontainers/blast:2.15.0--pl5321h6f7f691_1
+$ singularity pull docker://quay.io/biocontainers/blast:2.15.0--pl5321h6f7f691_1
 
 ## To give a customerized output name
-singularity pull blast_2.15.0.sif docker://quay.io/biocontainers/blast:2.15.0--pl5321h6f7f691_1
-```
+$ singularity pull blast_2.15.0.sif docker://quay.io/biocontainers/blast:2.15.0--pl5321h6f7f691_1
 
-#### Docker hub
-Besides BioContainers, I can also pull image from the largest container registry Docker hub. [This container](https://hub.docker.com/r/ncbi/blast/tags) may be even better, because it is the official container image from NCBI. 
-
-To pull the blast image from Docker hub, you can simply use the following command.
-```
-singularity pull docker://ncbi/blast:2.15.0
+$ ls 
+    blast_2.15.0.sif blast_2.15.0--pl5321h6f7f691_1.sif 
 ```
 
 ### Pytorch
@@ -50,20 +45,22 @@ If you want to use PyTorch, simply pull the [official container image](https://h
 ![Biocontainer tags](../images/pytorch.png)
 
 ```
-singularity pull docker://pytorch/pytorch:2.1.2-cuda11.8-cudnn8-runtime
+$ singularity pull docker://pytorch/pytorch:2.1.2-cuda11.8-cudnn8-runtime
+$ ls
+    blast_2.15.0.sif*  blast_2.15.0--pl5321h6f7f691_1.sif*  pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif*
 ```
 
 ## singularity/apptainer shell
 
-## syntax
+### syntax
 ```
-$ singularity/apptainer shell image.sif
+$ singularity/apptainer shell [options] image.sif
 ```
-
+### blast
 Let's go inside the pulled `blast` container.  
 
 ```
-$ singularity shell bowtie2_v2_4_1.sif 
+$ singularity shell blast_2.15.0.sif  
 Singularity> more /etc/os-release 
 PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
 NAME="Debian GNU/Linux"
@@ -79,14 +76,49 @@ Singularity> which blastp
 /usr/local/bin/blastp
 
 Singularity> ls /
-apps         boot         dev          etc          lib          linuxrc      mnt          proc         run          scratch      srv          tmp          var
-bin          depot        environment  home         lib64        media        opt          root         sbin         singularity  sys          usr
+bin          dev          home         linuxrc      opt          run          srv          usr
+boot         environment  lib          media        proc         sbin         sys          var
+cluster      etc          lib64        mnt          root         singularity  tmp
+
+Singularity> cd /cluster/
+
+Singularity> ls
+home
+
+Singularity> cd /cluster/tufts
+bash: cd: /cluster/tufts: No such file or directory
 ```
-From `ls /`, we can see that Singularity automatically binds `apps`, `depot`, `home`, `scratch`, `tmp` into the container.   
 
+You may have noticed that although we can see `/cluster`, `/cluster/tufts` is not inside the container. Only `/cluster/home` is located within the container.
 
-Exit from the container shell when done inspecting
+### Exit from the container shell when done inspecting
 ```
 Singularity> exit
 $                          # back to your regular shell prompt
 ```
+
+### Bind /cluster/tufts
+
+To enable the container to access `/cluster/tufts`, we must bind the directory into the container.
+```
+$ singularity shell -B /cluster/tufts blast_2.15.0.sif 
+Singularity> ls /cluster/
+home   tufts
+Singularity> cd /cluster/tufts/
+```
+
+### pytorch
+Before using the PyTorch container for our analysis, let's check if `torch` was successfully installed into the Python inside the container. We also need to ensure that we are using the correct Torch version, i.e., 2.1.2.
+```
+$ singularity shell pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif
+$ Singularity> python
+Python 3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import torch
+>>> print(torch.__version__)
+2.1.2
+>>> quit()
+Singularity> exit
+$ exit # back to your regular shell prompt
+```
+

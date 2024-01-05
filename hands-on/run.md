@@ -14,7 +14,7 @@ I stored test datasets for blast and pytorch, please copy the datasets to your o
 ```
 $ cp /cluster/tufts/biocontainers/workshop/Spring2024Container/data/* .
 # ls
-blastdb.faa input.fasta torch_cpu.py
+blastdb.faa input.fasta torch_demo.py 
 ```
 
 ## blast
@@ -31,10 +31,9 @@ Maximum file size: 3000000000B
 BLAST options error: File blastdb.faa does not exist
 ```
 
-Why there is an error `BLAST options error: File blastdb.faa does not exist` :cry:? 
-:sweat: I forgot to bind `/cluster/tufts` into the container. 
+Why there is an error `BLAST options error: File blastdb.faa does not exist`?
+The reason is I forgot to bind `/cluster/tufts` into the container. 
 Let's try it again.
-
 
 ```
 singularity exec -B /cluster/tufts blast_2.15.0.sif makeblastdb -in blastdb.faa -dbtype prot -out blastdb
@@ -106,30 +105,63 @@ export SINGULARITY_BIND="/cluster/tufts"
 If you add the above line to your `.bashrc` file, and you'll never have to worry about the bind issue again.
 
 ```
-$ singularity exec pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif python torch_cpu.py 
+$ singularity exec pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif python torch_demo.py 
 ```
 
 Output
 ```
-99 2273.6953125
-199 1519.8489990234375
-299 1017.45751953125
-399 682.482421875
-499 459.0209655761719
-599 309.8703918457031
-699 210.26351928710938
-799 143.7040557861328
-899 99.20035552978516
-999 69.42457580566406
-1099 49.489356994628906
-1199 36.13310623168945
-1299 27.178112030029297
-1399 21.169414520263672
-1499 17.134441375732422
-1599 14.422635078430176
-1699 12.59858512878418
-1799 11.37055492401123
-1899 10.543051719665527
-1999 9.984912872314453
-Result: y = -0.02127980999648571 + 0.8298792839050293 x + 0.003671120386570692 x^2 + -0.08950956165790558 x^3
+Using device: cpu
+
+99 1670.406005859375
+199 1174.715087890625
+299 827.3037109375
+399 583.6807861328125
+499 412.75054931640625
+599 292.76397705078125
+699 208.4979705810547
+799 149.29208374023438
+899 107.67591857910156
+999 78.41207885742188
+1099 57.82627868652344
+1199 43.339988708496094
+1299 33.142459869384766
+1399 25.961669921875
+1499 20.903663635253906
+1599 17.33988380432129
+1699 14.828240394592285
+1799 13.057659149169922
+1899 11.809200286865234
+1999 10.928688049316406
+Result: y = 0.04767719283699989 + 0.8479017615318298 x + -0.008225110359489918 x^2 + -0.09207310527563095 x^3
 ```
+
+In the workshop, we run the demo with a CPU node. If you run the torch container with a GPU node, you will see the output similar to below. Don't forget to add `--nv` in your command, otherwise GPU acceleration will not be enabled.
+
+```
+$ singularity exec --nv /cluster/tufts/biocontainers/workshop/Spring2024Container/pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif python torch_demo.py 
+Using device: cuda
+NVIDIA A100 80GB PCIe
+
+99 2358.21044921875
+199 1641.4652099609375
+299 1144.3896484375
+399 799.3317260742188
+499 559.5805053710938
+599 392.8489074707031
+699 276.7975769042969
+799 195.95428466796875
+899 139.59222412109375
+999 100.26740264892578
+1099 72.80936431884766
+1199 53.623443603515625
+1299 40.20844268798828
+1399 30.822301864624023
+1499 24.25098419189453
+1599 19.647563934326172
+1699 16.420917510986328
+1799 14.158018112182617
+1899 12.570213317871094
+1999 11.455560684204102
+Result: y = 0.0517403818666935 + 0.8414013981819153 x + -0.00892607495188713 x^2 + -0.0911484807729721 x^3
+```
+

@@ -33,5 +33,6 @@ In November 2021, the Singularity project joined the Linux Foundation, and renam
 
 ## Hands-on
 - [Load singularity/apptainer modules](hands-on/load_modules.md)
-- [Pull container images](hands-on/pull.md)
-- [Run containers](hands-on/run.md)
+- [singularity pull](hands-on/pull.md)
+- [singularity shell](hands-on/shell.md)
+- [singularity run](hands-on/run.md)

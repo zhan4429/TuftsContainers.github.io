@@ -6,14 +6,13 @@ $ singularity/apptainer pull [output file] <URI>
 ```
 
 ### Blast
-You can find almost all bioinformatics applications from BioContainer's [Package Index](https://bioconda.github.io/conda-package_index.html)
+BioContainers is integrated with bioconda. You can find almost all bioinformatics applications from BioContainer's [Package Index](https://bioconda.github.io/conda-package_index.html)
 
 [Blast](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs) is a widely used bioinformatics application. Here I will show how to pull its latest version (2.15.0) from BioContainers. 
 
-#### Biocontainers
-Bioconda is integrated with BioContainers. You can find blast containers from its [bioconda page](https://bioconda.github.io/recipes/blast/README.html#package-blast).
+Here is the Blast's [bioconda page](https://bioconda.github.io/recipes/blast/README.html#package-blast).
 
-From the instruction, the pull command is listed below:
+The following is the pull command as listed in the instructions:
 ```
 docker pull quay.io/biocontainers/blast:<tag>
 (see `blast/tags`_ for valid values for ``<tag>``)
@@ -38,6 +37,7 @@ $ singularity pull blast_2.15.0.sif docker://quay.io/biocontainers/blast:2.15.0-
 $ ls 
     blast_2.15.0.sif blast_2.15.0--pl5321h6f7f691_1.sif 
 ```
+You will notice that pulling `blast_2.15.0.sif` is much faster because it utilizes the singularity caches stored in `$HOME/.singularity`.
 
 ### Pytorch
 [PyTorch](https://pytorch.org) is a powerful open-source machine learning framework based on the Python programming language and the Torch library. It's widely used for deep learning, a type of machine learning that builds complex models like artificial neural networks for tasks like image recognition, natural language processing, and more.

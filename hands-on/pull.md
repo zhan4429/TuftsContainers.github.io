@@ -39,10 +39,10 @@ $ ls
 ```
 You will notice that pulling `blast_2.15.0.sif` is much faster because it utilizes the singularity caches stored in `$HOME/.singularity`.
 
-### Pytorch
+### PyTorch
 [PyTorch](https://pytorch.org) is a powerful open-source machine learning framework based on the Python programming language and the Torch library. It's widely used for deep learning, a type of machine learning that builds complex models like artificial neural networks for tasks like image recognition, natural language processing, and more.
 
-If you want to install PyTorch, it can be complex. You have to ensure different libraries (e.g. CUDA) and dependencies are compatible. If you use container, you can easily pull [official container image](https://hub.docker.com/r/pytorch/pytorch) from Docker Hub. 
+If you want to install PyTorch, it can be complex. You have to ensure different libraries (e.g., CUDA) and dependencies are compatible. If you use container, you can easily pull [official container image](https://hub.docker.com/r/pytorch/pytorch) from Docker Hub. 
 ![torch](../images/pytorch.png)
 
 ```

@@ -11,23 +11,22 @@ blastdb.faa  easysfs_0.0.1.def  easySFS_examples  easySFS.py  input.fasta  Spect
 Bootstrap: docker
 From: condaforge/mambaforge
 
-%files
-   easySFS_examples /opt/easySFS_examples
-   Spectrum.py /opt/Spectrum.py
-   easySFS.py /opt/easySFS.py
+%labels
+    Author "Yucheng Zhang <yzhang85@tufts.edu>"
+
+%help
+    This container contains the 0.0.1 of easySFS.  
 
 %post
-    mamba install -c conda-forge spectrum numpy pandas scipy
-    cd /opt
-    chmod a+x Spectrum.py
-    chmod a+x easySFS.py
-    chmod 775 easySFS_examples
+    mamba install -c conda-forge spectrum numpy pandas scipy 
+    mamba install -c bioconda dadi pandas 
+    cd /opt/
+    git clone https://github.com/isaacovercast/easySFS.git
+    cd easySFS
+    chmod +x *.py
 
 %environment
-    export PATH=/opt:$PATH
-
-%runscript
-    easySFS.py -i /opt/easySFS_examples/wcs_1200.vcf -p /opt/easySFS_examples/wcs_pops.txt --preview -a
+    export PATH=/opt/easySFS:$PATH
 ```
 
 ## Build container

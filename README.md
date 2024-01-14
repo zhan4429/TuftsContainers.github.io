@@ -15,7 +15,7 @@ Topics include:
 - Use `apptainer/1.2.5-no-suid` only when building containers on the interactive partition.
 - Please ensure that you bind `/cluster/tufts` to the container.
 - To ensure that you're not wasting your time building your own containers, it's recommended to check if there are any publicly available containers that can serve your purpose.
-- If you plan to use GPU containers, ensure compatibility between CUDA version and GPU’s CUDA driver version.
+- If you plan to use GPU containers, ensure compatibility between the CUDA version that was used to build the target application inside container and our GPU’s CUDA driver version.
 - When running containers that require GPU, make sure to include the `--nv` flag.
 - Remember to use `ncdu`, a helpful tool, to regularly check and clean up `$HOME/.apptainer` and `$HOME/.singularity` directories. 
 

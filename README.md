@@ -1,4 +1,15 @@
-## What is container?  
+Containers have become a transformative technology in HPC, offering significant advantages in portability, reproducibility, performance, isolation, and security. They are rapidly gaining adoption in scientific computing and are poised to play a pivotal role in the future of HPC. 
+
+In this virtual workshop produced by Tufts [Research Technology](https://it.tufts.edu/researchtechnology.tufts.edu), you’ll learn the best practices of pulling and running containers on Tufts HPC, and how to build your own containers with both Apptainer and Docker. 
+
+Topics include:
+- What are containers and why should we use them
+- How to use Singularity/Apptainer to pull and run containers
+- How to build containers with Docker and Apptainer
+- Environment modules based on containers
+- Advanced topics namely multinode-MPI and GPU containers
+- Hands-on Demo
+
 - A **container** is an abstraction for a set of technologies that aim to solve the problem of how to get software to run reliably when moved from one computing environment to another.  
 - A container **image** is simply a file (or collection of files ) saved on disk that stores everything you need to run a target application or applications.  
 

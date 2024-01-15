@@ -1,5 +1,5 @@
 ## Singularity
-For your convenience, please only use the `singularity` module when you need to pull or run containers on the HPC system. There is no need to use the older singularity modules. As of January 24th, 2024, the latest version available on our cluster is `3.8.4`. In case we deploy newer versions of `singularity` in the future, please make sure to use the latest versions.
+For your convenience, please always use the `singularity` module when you need to pull or run containers on the HPC system. There is no need to use the older singularity modules. As of January 24th, 2024, the latest version available on our cluster is `3.8.4`. In case we deploy newer versions of `singularity` in the future, please make sure to use the latest versions.
 
 It is highly recommended to run `module purge` before loading `singularity`. 
 ```

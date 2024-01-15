@@ -18,7 +18,7 @@ docker pull quay.io/biocontainers/blast:<tag>
 (see `blast/tags`_ for valid values for ``<tag>``)
 ```
 
-You can find the tags by clicking on the `Containers`, as illustrated below. 
+You can find the tags by clicking on the `container`, as illustrated below. 
 
 ![Biocontainer containers](../images/blast1.png)
 

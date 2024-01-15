@@ -4,7 +4,7 @@
 $ cp -r /cluster/tufts/biocontainers/workshop/Spring2024Container/data .
 $ cd data
 $ ls
-blastdb.faa  easysfs_0.0.1.def  easySFS_examples  easySFS.py  input.fasta  Spectrum.py  torch_demo.py
+blastdb.faa  easysfs_0.0.1.def  easySFS_examples  input.fasta
 ```
 ## Definition file
 ```
@@ -31,45 +31,16 @@ From: condaforge/mambaforge
 
 ## Build container
 ```
-module purge
-module load apptainer/1.2.5
-apptainer build easysfs_0.0.1.sif easysfs_0.0.1.def
+$ srun -N1 -n1 -t1:00:00 -p interactive --pty bash 
+$ module purge
+$ module load apptainer/1.2.5-no-suid
+$ apptainer build easysfs_0.0.1.sif easysfs_0.0.1.def
 ```
 
 ## Run the container with exec
 ```
-[tutln02@c1cmp063 data]$ apptainer exec easysfs_0.0.1.sif easySFS.py -h
-INFO:    underlay of /etc/localtime required more than 50 (75) bind mounts
-usage: easySFS.py [-h] -i VCF_NAME -p POPULATIONS [-o OUTDIR] [--proj PROJECTIONS] [--preview] [--ploidy PLOIDY] [--prefix PREFIX] [--unfolded] [--order POP_ORDER]
-                  [--dtype DTYPE] [--GQ GQUAL] [--total-length TOTAL_LENGTH] [--window-bp WINDOW_BP] [--window-snp WINDOW_SNP] [-a] [-f] [-v]
-
-options:
-  -h, --help            show this help message and exit
-  -i VCF_NAME           name of the VCF input file being converted
-  -p POPULATIONS        Input file containing population assignments per individual
-  -o OUTDIR             Directory to write output SFS to
-  --proj PROJECTIONS    List of values for projecting populations down to different sample sizes
-  --preview             Preview the number of segragating sites per population for different projection values.
-  --ploidy PLOIDY       Specify ploidy. Default is 2. Only other option is 1 for haploid.
-  --prefix PREFIX       Prefix for all output SFS files names.
-  --unfolded            Generate unfolded SFS. This assumes that your vcf file is accurately polarized.
-  --order POP_ORDER     Specify the order of populations for the generated sfs. Values for --proj should be in this order as well.
-  --dtype DTYPE         Data type for use in output sfs. Options are `int` and `float`. Default is `float`.
-  --GQ GQUAL            minimum genotype quality tolerated
-  --total-length TOTAL_LENGTH
-                        total sequence length of input data (for accurate zero bin)
-  --window-bp WINDOW_BP
-                        Select SNPs based on window size in base pairs
-  --window-snp WINDOW_SNP
-                        Select SNPs based on window size in number of SNPs
-  -a                    Keep all snps within each RAD locus (ie. do _not_ randomly sample 1 snp per locus).
-  -f                    Force overwriting directories and existing files.
-  -v                    Set verbosity. Dump tons of info to the screen
-```
-
-## Run the container with run
-```
-[tutln02@c1cmp063 data]$ apptainer run easysfs_0.0.1.sif 
+$ apptainer exec  -B /cluster/tufts easysfs_0.0.1.sif easySFS.py -i easySFS_examples/wcs_1200.vcf -p easySFS_examples/wcs_pops.txt --preview -a
+INFO:    fuse2fs not found, will not be able to mount EXT3 filesystems
 INFO:    underlay of /etc/localtime required more than 50 (75) bind mounts
 
   Processing 2 populations - ['nuttalli', 'pugetensis']

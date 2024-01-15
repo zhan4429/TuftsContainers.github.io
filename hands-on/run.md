@@ -12,9 +12,9 @@ After we pulled images from public registries onto the cluster, we can use them 
 ## Test datasets
 I stored test datasets for blast and pytorch, please copy the datasets to your own folder.
 ```
-$ cp /cluster/tufts/biocontainers/workshop/Spring2024Container/data/* .
+$ cp -r /cluster/tufts/biocontainers/workshop/Spring2024Container/data/* .
 # ls
-blastdb.faa input.fasta torch_demo.py 
+blastdb.faa  easysfs_0.0.1.def  easySFS_examples  input.fasta
 ```
 
 ## blast

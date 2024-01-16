@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: condaforge/mambaforge
+
+%labels
+    Author "Yucheng Zhang <yzhang85@tufts.edu>"
+
+%help
+    This container contains the 0.0.1 of easySFS.  
+
+%post
+    mamba install -c conda-forge spectrum numpy pandas scipy 
+    mamba install -c bioconda dadi pandas 
+    cd /opt/
+    git clone https://github.com/isaacovercast/easySFS.git
+    cd easySFS
+    chmod +x *.py
+
+%environment
+    export PATH=/opt/easySFS:$PATH

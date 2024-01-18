@@ -18,6 +18,6 @@ Our cluster currently has two groups of `apptainer` modules: one with `-suid` an
 
 To avoid confusion, we recommend using `apptainer` only when building containers on the `interactive` partition, and using the `-no-suid` version exclusively. As of January 24th, 2024, version `1.2.5-no-suid` is the latest available version.
 ```
-$ srun -N1 -n1 -t4:00:00 -p interactive --pty bash ## You will start an interactive session on interactive partition with 1 core and 4-hour walltime.
+$ srun -N1 -n2 -t2:00:00 -p interactive --pty bash ## You will start an interactive session on interactive partition with 2 cores and 2-hour walltime.
 $ module load apptainer/1.2.5-no-suid
 ```

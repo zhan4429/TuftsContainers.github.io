@@ -1,6 +1,6 @@
 ## singularity pull
 ### Syntax
-Download or build a container from a given URI. 
+Download or pull a container from a given URI. 
 ```
 $ singularity pull [output file] <URI>
 ```

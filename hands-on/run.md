@@ -1,10 +1,10 @@
-# singularity/apptainer exec
+# singularity exec
 Singularity has a `run` subcommand. This can be used to run the user-defined default command within a container. However, it is recommended to use another subcommand `exec` instead of `run`. If you're interested in `run`, please check the [singularity user guide](https://docs.sylabs.io/guides/3.8/user-guide/cli/singularity_run.html#singularity-run). 
 
 ## Syntax
 Download or build a container from a given URI. 
 ```
-singularity/apptainer exec [options] image command
+singularity exec [options] image command
 ```
 
 After we pulled images from public registries onto the cluster, we can use them to run analysis. If you haven't pulled images, please follow the guideline in the [Pull container images](hands-on/pull.md).
@@ -138,6 +138,7 @@ Result: y = 0.04767719283699989 + 0.8479017615318298 x + -0.008225110359489918 x
 In the workshop, we run the demo with a CPU node. If you run the torch container with a GPU node, you will see the output similar to below. Don't forget to add `--nv` in your command, otherwise GPU acceleration will not be enabled.
 
 ```
+$ srun -N1 -n2 --gres=gpu:1 -p gpu -t1:00:00 --pty bash
 $ singularity exec --nv /cluster/tufts/biocontainers/workshop/Spring2024Container/pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif python torch_demo.py 
 Using device: cuda
 NVIDIA A100 80GB PCIe

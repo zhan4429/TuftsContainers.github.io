@@ -1,8 +1,8 @@
-## singularity/apptainer pull
+## singularity pull
 ### Syntax
 Download or build a container from a given URI. 
 ```
-$ singularity/apptainer pull [output file] <URI>
+$ singularity pull [output file] <URI>
 ```
 
 ### Blast

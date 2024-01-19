@@ -1,8 +1,8 @@
-## singularity/apptainer shell
+## singularity shell
 
 ### syntax
 ```
-$ singularity/apptainer shell [options] image.sif
+$ singularity shell [options] image.sif
 ```
 ### blast
 Let's go inside the pulled `blast` container.  

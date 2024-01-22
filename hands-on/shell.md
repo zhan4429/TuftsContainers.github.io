@@ -68,6 +68,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 Singularity> exit
 $ exit # back to your regular shell prompt
 ```
-[Next: Run container](hands-on/run.md)
+[Next: Run container](run.md)
 
-[Previous: Load modules](hands-on/load_modules.md)
+[Previous: Load modules](load_modules.md)

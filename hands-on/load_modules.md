@@ -22,4 +22,4 @@ $ srun -N1 -n2 -t2:00:00 -p interactive --pty bash ## You will start an interact
 $ module purge
 $ module load apptainer/1.2.5-no-suid
 ```
-[Next: Singularity pull](hands-on/pull.md)
+[Next: Singularity pull](pull.md)

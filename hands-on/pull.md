@@ -51,6 +51,6 @@ $ ls
     blast_2.15.0.sif*  blast_2.15.0--pl5321h6f7f691_1.sif*  pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif*
 ```
 
-[Next: Singularity shell](hands-on/shell.md)
+[Next: Singularity shell](shell.md)
 
-[Previous: Load modules](hands-on/load_modules.md)
+[Previous: Load modules](load_modules.md)

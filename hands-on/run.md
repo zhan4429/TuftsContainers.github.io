@@ -166,3 +166,6 @@ NVIDIA A100 80GB PCIe
 Result: y = 0.0517403818666935 + 0.8414013981819153 x + -0.00892607495188713 x^2 + -0.0911484807729721 x^3
 ```
 
+[Next: Singularity build](hands-on/build.md)
+
+[Previous: Load modules](hands-on/load_modules.md)

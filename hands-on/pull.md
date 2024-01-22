@@ -5,6 +5,15 @@ Download or pull a container from a given URI.
 $ singularity pull [output file] <URI>
 ```
 
+### Load modules
+Like I mentioned in the presentation, to `pull` or `run` containers, `singularity` instead of `apptainer` is recommended. 
+
+```
+$ module purge
+$ module load singularity/3.8.4
+$ module list
+```
+
 ### Blast
 BioContainers is integrated with bioconda. You can find almost all bioinformatics applications from BioContainer's [Package Index](https://bioconda.github.io/conda-package_index.html)
 

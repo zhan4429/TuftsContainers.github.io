@@ -12,6 +12,8 @@ Like I mentioned in the presentation, to `pull` or `run` containers, `singularit
 $ module purge
 $ module load singularity/3.8.4
 $ module list
+    Currently Loaded Modulefiles:
+  1) squashfs/4.4                 2) singularity/3.8.4(default)
 ```
 
 ### Blast
@@ -58,6 +60,16 @@ If you want to install PyTorch, it can be complex. You have to ensure different 
 $ singularity pull docker://pytorch/pytorch:2.1.2-cuda11.8-cudnn8-runtime
 $ ls
     blast_2.15.0.sif*  blast_2.15.0--pl5321h6f7f691_1.sif*  pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif*
+```
+
+---
+**NOTE**
+
+Because pytorch image is large, pulling will take some time. Since we do not have time in the workshop, you can just just copy my pre-pulled image to your current folder and use it for the tests in next sessions.
+---
+
+```
+cp /cluster/tufts/biocontainers/workshop/Spring2024Container/pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif .
 ```
 
 [Next: Singularity shell](shell.md)

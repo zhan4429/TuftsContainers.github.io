@@ -62,7 +62,6 @@ $ ls
     blast_2.15.0.sif*  blast_2.15.0--pl5321h6f7f691_1.sif*  pytorch_2.1.2-cuda11.8-cudnn8-runtime.sif*
 ```
 
-> [!NOTE] 
 > Because pytorch image is large, pulling will take some time. Since we do not have time in the workshop, you can just just copy my pre-pulled image to your current folder and use it for the tests in next sessions.
 
 ```

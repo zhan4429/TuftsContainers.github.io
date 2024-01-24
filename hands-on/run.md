@@ -14,7 +14,7 @@ I stored test datasets for blast and pytorch, please copy the datasets to your o
 ```
 $ cp -r /cluster/tufts/biocontainers/workshop/Spring2024Container/data/* .
 # ls
-blastdb.faa  easysfs_0.0.1.def  easySFS_examples  input.fasta
+blastdb.faa  easysfs_0.0.1.def  easySFS_examples  input.fasta torch_demo.py
 ```
 
 ## blast

@@ -1,7 +1,7 @@
 ## Start an interactive job
 
 ```
-$ srun -N1 -n2 -t2:00:00 -p interactive --reservation=rtworkshop --pty bash ## You will start an interactive session on interactive partition with 2 cores and 2-hour walltime.
+$ srun -N1 -n2 -t1:00:00 -p interactive --reservation=rtworkshop --pty bash ## You will start an interactive session on interactive partition with 2 cores and 2-hour walltime.
 ```
 
 > `--reservation=rtworkshop` is only valid during the workshop. You do not need it in your future commands.

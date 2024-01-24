@@ -31,7 +31,6 @@ From: condaforge/mambaforge
 
 ## Build container
 ```
-$ srun -N1 -n2 -t2:00:00 -p interactive --pty bash 
 $ module purge
 $ module load apptainer/1.2.5-no-suid
 $ apptainer build easysfs_0.0.1.sif easysfs_0.0.1.def
